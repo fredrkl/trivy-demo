@@ -1,7 +1,5 @@
 # Trivy-demo
 
-Trivy demo
-
 ![Trivy](./images/Aqua-trivy-logo.png)
 
 ## Image scanning
@@ -12,7 +10,10 @@ Lets look at an example of scanning a image using Trivy:
 > trivy image python:3.4-alpine
 ```
 
-Output:
+### Output
+
+<details>
+    <summary>The output:</summary>
 
 ```text
 2023-05-06T15:29:29.058Z        INFO    Need to update DB
@@ -194,3 +195,9 @@ Total: 4 (UNKNOWN: 0, LOW: 0, MEDIUM: 2, HIGH: 2, CRITICAL: 0)
 │                       │                │          │                   │               │ https://avd.aquasec.com/nvd/cve-2022-40898                  │
 └───────────────────────┴────────────────┴──────────┴───────────────────┴───────────────┴─────────────────────────────────────────────────────────────┘
 ```
+
+</details>
+
+## Dockerfile scanning
+
+You can scan a Dockerfile by embedding and running the _Trivy_ scan during the build, e.g, scanning-targets/Dockerfile.
