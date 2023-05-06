@@ -1,1 +1,1 @@
-echo "command -v flux >/dev/null && . <(flux completion bash)" >> ~/.bashrc
+echo ". <(trivy completion bash)" >> ~/.bashrc
