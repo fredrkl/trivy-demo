@@ -1,10 +1,12 @@
-# Trivy-demo
+# Trivy Demo
+
+Demo repository showcasing some of the possibilities of Aqua Trivy.
 
 ![Trivy](./images/Aqua-trivy-logo.png)
 
 ## Image scanning
 
-Lets look at an example of scanning a image using Trivy:
+Let's look at an example of scanning an image using Trivy:
 
 ```bash
 > trivy image python:3.4-alpine
@@ -200,4 +202,4 @@ Total: 4 (UNKNOWN: 0, LOW: 0, MEDIUM: 2, HIGH: 2, CRITICAL: 0)
 
 ## Dockerfile scanning
 
-You can scan a Dockerfile by embedding and running the _Trivy_ scan during the build, e.g, scanning-targets/Dockerfile.
+You can scan a Dockerfile by embedding and running the _Trivy_ scan during the build, e.g., scanning-targets/Dockerfile.
