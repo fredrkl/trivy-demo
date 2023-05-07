@@ -6,7 +6,8 @@ on:
   pull_request:
 jobs:
   build:
-    permissions: write-all
+    permissions:
+      contents: read
     name: Build
     runs-on: ubuntu-20.04
     steps:
