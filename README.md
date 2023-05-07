@@ -272,3 +272,6 @@ The `--exit-code` specifies the exit code when any security issues are found, th
 executor failed running [/bin/sh -c apk add curl     && curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/master/contrib/install.sh | sh -s -- -b /usr/local/bin     && trivy filesystem --exit-code 1 --no-progress /]: exit code: 1
 </details>
 
+## GitHub (GH) Action scanning
+
+The .github/workflows/trivy-scann.yaml show how to integrate Dockerfile scanning using Trivy and GH Action. You will find the results in the Security tab in GH.
