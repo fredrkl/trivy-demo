@@ -8,10 +8,11 @@ on:
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
 
+permissions:
+  contents: read
+
 jobs:
   build-and-scan:
-    permissions:
-      contents: read
     name: Build
     runs-on: ubuntu-20.04
     steps:
