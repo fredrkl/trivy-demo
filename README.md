@@ -15,8 +15,10 @@ Let's look at an example of scanning an image using Trivy:
 > trivy image python:3.4-alpine
 ```
 
+### Output
+
 <details>
-    <summary>Output:</summary>
+    <summary>The output:</summary>
 
 ```text
 2023-05-06T15:29:29.058Z        INFO    Need to update DB
@@ -198,9 +200,75 @@ Total: 4 (UNKNOWN: 0, LOW: 0, MEDIUM: 2, HIGH: 2, CRITICAL: 0)
 │                       │                │          │                   │               │ https://avd.aquasec.com/nvd/cve-2022-40898                  │
 └───────────────────────┴────────────────┴──────────┴───────────────────┴───────────────┴─────────────────────────────────────────────────────────────┘
 ```
-
 </details>
 
 ## Dockerfile scanning
 
 You can scan a Dockerfile by embedding and running the _Trivy_ scan during the build, e.g., scanning-targets/Dockerfile.
+
+```bash
+docker build -t scanned-image scanning-targets/
+```
+
+The `--exit-code` specifies the exit code when any security issues are found, thus running it with the example from the Dockerfile in scanning-targets/ will fail the Dockerbuild if the status code is 1 (which in this case it is).
+<details>
+    <summary>The output:</summary>
+[+] Building 16.2s (5/5) FINISHED
+ => [internal] load build definition from Dockerfile                                                                0.0s
+ => => transferring dockerfile: 262B                                                                                0.0s
+ => [internal] load .dockerignore                                                                                   0.0s
+ => => transferring context: 2B                                                                                     0.0s
+ => [internal] load metadata for docker.io/library/alpine:3.7                                                       0.6s
+ => CACHED [1/2] FROM docker.io/library/alpine:3.7@sha256:8421d9a84432575381bfabd248f1eb56f3aa21d9d7cd2511583c68c9  0.0s
+ => ERROR [2/2] RUN apk add curl     && curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/master/con  15.5s
+------
+ > [2/2] RUN apk add curl     && curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/master/contrib/install.sh | sh -s -- -b /usr/local/bin     && trivy filesystem --exit-code 1 --no-progress /:
+#5 0.366 fetch http://dl-cdn.alpinelinux.org/alpine/v3.7/main/x86_64/APKINDEX.tar.gz
+#5 0.634 fetch http://dl-cdn.alpinelinux.org/alpine/v3.7/community/x86_64/APKINDEX.tar.gz
+#5 0.778 (1/4) Installing ca-certificates (20190108-r0)
+#5 0.852 (2/4) Installing libssh2 (1.9.0-r1)
+#5 0.912 (3/4) Installing libcurl (7.61.1-r3)
+#5 0.986 (4/4) Installing curl (7.61.1-r3)
+#5 1.051 Executing busybox-1.27.2-r11.trigger
+#5 1.056 Executing ca-certificates-20190108-r0.trigger
+#5 1.119 OK: 6 MiB in 17 packages
+#5 1.330 aquasecurity/trivy info checking GitHub for latest tag
+#5 1.892 aquasecurity/trivy info found version: 0.41.0 for v0.41.0/Linux/64bit
+#5 8.685 aquasecurity/trivy info installed /usr/local/bin/trivy
+#5 9.131 2023-05-07T07:28:11.532Z       INFO    Need to update DB
+#5 9.131 2023-05-07T07:28:11.532Z       INFO    DB Repository: ghcr.io/aquasecurity/trivy-db
+#5 9.131 2023-05-07T07:28:11.532Z       INFO    Downloading DB...
+#5 14.80 2023-05-07T07:28:17.195Z       INFO    Vulnerability scanning is enabled
+#5 14.80 2023-05-07T07:28:17.196Z       INFO    Secret scanning is enabled
+#5 14.80 2023-05-07T07:28:17.196Z       INFO    If your scanning is slow, please try '--scanners vuln' to disable secret scanning
+#5 14.80 2023-05-07T07:28:17.196Z       INFO    Please see also https://aquasecurity.github.io/trivy/v0.41/docs/secret/scanning/#recommendation for faster secret detection
+#5 14.99 2023-05-07T07:28:17.393Z       INFO    Detected OS: alpine
+#5 14.99 2023-05-07T07:28:17.393Z       INFO    Detecting Alpine vulnerabilities...
+#5 14.99 2023-05-07T07:28:17.394Z       INFO    Number of language-specific files: 0
+#5 14.99 2023-05-07T07:28:17.394Z       WARN    This OS version is no longer supported by the distribution: alpine 3.7.3
+#5 14.99 2023-05-07T07:28:17.394Z       WARN    The vulnerability detection may be insufficient because security updates are not provided
+#5 15.00
+#5 15.00 localhost (alpine 3.7.3)
+#5 15.00 ========================
+#5 15.00 Total: 2 (UNKNOWN: 0, LOW: 0, MEDIUM: 0, HIGH: 0, CRITICAL: 2)
+#5 15.00
+#5 15.00 ┌────────────┬────────────────┬──────────┬───────────────────┬───────────────┬──────────────────────────────────────────────────────────┐
+#5 15.00 │  Library   │ Vulnerability  │ Severity │ Installed Version │ Fixed Version │                          Title                           │
+#5 15.00 ├────────────┼────────────────┼──────────┼───────────────────┼───────────────┼──────────────────────────────────────────────────────────┤
+#5 15.00 │ musl       │ CVE-2019-14697 │ CRITICAL │ 1.1.18-r3         │ 1.1.18-r4     │ musl libc through 1.1.23 has an x87 floating-point stack │
+#5 15.00 │            │                │          │                   │               │ adjustment im ......
+                        │
+#5 15.00 │            │                │          │                   │               │ https://avd.aquasec.com/nvd/cve-2019-14697               │
+#5 15.00 ├────────────┤                │          │                   │               │
+                        │
+#5 15.00 │ musl-utils │                │          │                   │               │
+                        │
+#5 15.00 │            │                │          │                   │               │
+                        │
+#5 15.00 │            │                │          │                   │               │
+                        │
+#5 15.00 └────────────┴────────────────┴──────────┴───────────────────┴───────────────┴──────────────────────────────────────────────────────────┘
+------
+executor failed running [/bin/sh -c apk add curl     && curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/master/contrib/install.sh | sh -s -- -b /usr/local/bin     && trivy filesystem --exit-code 1 --no-progress /]: exit code: 1
+</details>
+
