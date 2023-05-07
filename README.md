@@ -15,10 +15,8 @@ Let's look at an example of scanning an image using Trivy:
 > trivy image python:3.4-alpine
 ```
 
-### Output
-
 <details>
-    <summary>The output:</summary>
+    <summary>Output:</summary>
 
 ```text
 2023-05-06T15:29:29.058Z        INFO    Need to update DB
