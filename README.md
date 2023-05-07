@@ -204,7 +204,17 @@ Total: 4 (UNKNOWN: 0, LOW: 0, MEDIUM: 2, HIGH: 2, CRITICAL: 0)
 
 ## Dockerfile scanning
 
-You can scan a Dockerfile by embedding and running the _Trivy_ scan during the build, e.g., scanning-targets/Dockerfile.
+### Using CLI
+
+You can scan a Dockerfile by running the _Trivy_ scan on the Dockerfile, e.g., scanning-targets/Dockerfile.
+
+```bash
+trivy config scanning-targets/Dockerfile
+```
+
+### In Dockerfile
+
+You can also scan a Dockerfile by embedding and running the _Trivy_ scan during the build, e.g., scanning-targets/Dockerfile.
 
 ```bash
 docker build -t scanned-image scanning-targets/
