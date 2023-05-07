@@ -1,15 +1,15 @@
 {
   "build": { "dockerfile": "Dockerfile" },
   "features": {
-    "ghcr.io/devcontainers/features/azure-cli:1": {
-      "version": "latest",
-      "installBicep": true
-    },
     "ghcr.io/devcontainers-contrib/features/kubectl-asdf:2": {
       "version": "latest"
     },
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {},
     "ghcr.io/devcontainers-contrib/features/kubectx-kubens:1": {
       "version": "latest"
+    },
+    "ghcr.io/mpriscella/features/kind:1": {
+        "version": "latest"
     }
   },
   "postCreateCommand": "bash -i ./.devcontainer/setup.sh",

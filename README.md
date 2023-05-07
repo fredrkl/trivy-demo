@@ -275,3 +275,21 @@ executor failed running [/bin/sh -c apk add curl     && curl -sfL https://raw.gi
 ## GitHub (GH) Action scanning
 
 The .github/workflows/trivy-scann.yaml show how to integrate Dockerfile scanning using Trivy and GH Action. You will find the results in the Security tab in GH.
+
+## Setup Trivy in K8s
+
+To create a cluster, run the following command:
+
+```bash
+kind create cluster --name trivy-demo
+```
+
+### Get the kubeconfig
+
+```bash
+kind get kubeconfig --name trivy > ~/.kube/config
+```
+
+### Install Trivy using Helm
+
+Following the instructions [here](https://aquasecurity.github.io/trivy-operator/v0.13.2/getting-started/installation/helm/) to install Trivy using Helm.
