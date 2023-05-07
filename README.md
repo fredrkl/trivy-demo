@@ -1,6 +1,6 @@
 # Trivy Demo
 
-[![build](https://github.com/fredrkl/trivy-demo/actions/workflows/docker-image.yml/badge.svg)](https://github.com/fredrkl/trivy-demo/actions/workflows/docker-image.yml)
+[![Trivy scanning](https://github.com/fredrkl/trivy-demo/actions/workflows/trivy-scan.yaml/badge.svg)](https://github.com/fredrkl/trivy-demo/actions/workflows/trivy-scan.yaml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 Demo repository showcasing some of the possibilities of Aqua Trivy.
