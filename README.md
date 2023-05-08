@@ -297,7 +297,7 @@ kind create cluster --name trivy-demo
 ### Get the kubeconfig
 
 ```bash
-kind get kubeconfig --name trivy > ~/.kube/config
+kind get kubeconfig --name trivy-demo > ~/.kube/config
 ```
 
 ### Install Trivy using Helm
