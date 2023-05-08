@@ -303,3 +303,7 @@ kind get kubeconfig --name trivy-demo > ~/.kube/config
 ### Install Trivy using Helm
 
 Following the instructions [here](https://aquasecurity.github.io/trivy-operator/v0.13.2/getting-started/installation/helm/) to install Trivy using Helm.
+
+### Get report
+
+```bash
