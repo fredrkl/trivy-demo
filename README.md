@@ -307,3 +307,6 @@ Following the instructions [here](https://aquasecurity.github.io/trivy-operator/
 ### Get report
 
 ```bash
+k get vulnerabilityreports.aquasecurity.github.io
+k get vulnerabilityreports.aquasecurity.github.io {report-name} -o yaml
+```
